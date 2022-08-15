@@ -1,0 +1,43 @@
+---
+title: "index.Rmd"
+author: "Xiuyao Wang"
+date: "2022-08-14"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## **Introduction**
+Since it seems that race plays a role in judicial proceedings, for example, the incarceration rate of people of color, particularly black people, is much higher than white people. This project will determine whether this claim is warranted by analyzing the race of inmates in prisons across the U.S. This project will draw conclusions by analyzing the number of black people and white people in prisons and their population each year in different states from 1990 to 2018.
+
+### Summary Infomation
+I've extracted seven values from the dataset(incarceration_trend.csv) which I'm interested in. According to the information of the dataset, the state with the most black inmates(**643048.6**) and the most white inmates(**721180.6**) in these 28 years is FL. Comparing with the jail population in 1990 and 2018, the population for Asian Americans and Pacific islanders(aapi) in jail has increased by **4780.78**; population for black people has increased by **76403.47**; population for latinx has increased by **52668.54**; population for native American has increased by **6716.23**; populaion for white people has increased by **179853.22**. 
+
+## **Trends over Time Chart**
+```{r,include=TRUE}
+source("analysis.R")
+print(black_pop_graph)
+```
+
+I picked the ten most populous states in the US for comparison by using a line chart. Although the data crosses a lot in the line chart, there is still a lot of useful information in it. Texas is the tenth-most populous state, however, the population of black people in jail is much higher than in states like GA and IL.(explanation in Map section)
+
+## **Variable Comparison Chart**
+```{r,include=TRUE}
+source("analysis.R")
+print(black_white_inca_rate_graph)
+```
+
+This line chart shows the incarceration rate of black people and white people for comparison. To make sure the images reflect the real situation, I used ratios instead of specific numbers. The incarceration rate is calculated by dividing the prison population by the population of the race. It shows that the incarceration rate for black people is much higher than for white people. 
+
+## **Map**
+```{r,include=TRUE}
+source("analysis.R")
+print(usmap_black_dist)
+```
+
+The map shows how the black population distributes in the United States by color. The darker the color, the more people in that state. It clearly shows how the black people distribute mainly in several states like TX, CA, GA, FL, NC, and NY. It explains why the number of black people in jail in Texas is higher than in other states. The huge population base of black people is the root cause of this phenomenon.
+
+## **Short Conclusion**
+Based on the above three images, it is true that blacks have higher incarceration rates than whites. In some states this is due to the racial structure of the population, but the common cause may be the injustice of enforcement due to race. 
